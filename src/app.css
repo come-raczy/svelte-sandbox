@@ -1,0 +1,16 @@
+
+@layer base {
+  :root {
+  }
+
+  .dark {
+    --color-primary: #d452f1;
+    --background-primary: #000000;
+  }
+  .light {
+    --color-primary: #300000;
+    --background-primary: #d452f1;
+  }
+
+}
+
