@@ -57,3 +57,22 @@ svelte preprocessor instead of vite preprocessor, and to prepend `src/app.scss` 
 scss preprocessing. This provides a mechanism to have SCSS variables and mixins. The 
 idea is that `app.scss` simply includes the requires SCSS content, in this case the
 files `_variables.scss` and `_mixins.scss`.
+
+## Fonts management
+
+Use [Fontsource](https://fontsource.org/) (see [instructions for svelte](https://fontsource.org/docs/guides/svelte)).
+
+For instance, install 'luckiest-guy':
+
+    npm install @fontsource/luckiest-guy
+
+Then import it is top level '+layout.svelte':
+
+    import '@fontsource/luckiest-guy';
+
+And finally, use it in the CSS, dor instance global body:
+
+    :global(body) {
+        font-family: 'Luckiest Guy', system-ui;
+    }
+
