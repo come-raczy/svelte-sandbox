@@ -1,21 +1,27 @@
 <script>
-    let theme = 'dark';
+        import '@fontsource/luckiest-guy';
+	let theme = 'dark';
+	let aa = { a: 1, b: 2 };
 </script>
 
 <div class="app {theme}">
 	<div class="header"></div>
 	<div style="flex-basis: 100%;height: 0"></div>
-	<div class="leftside"></div>
+	<div class="leftSide"></div>
 	<div class="main">
 		<slot />
 	</div>
-	<div class="rightside"></div>
+	<div class="rightSide"></div>
 	<div style="flex-basis: 100%;height: 0"></div>
 	<div class="footer"></div>
 </div>
 
 <style>
-  @import '../app.css';
+	@import '../app.css';
+	
+        :global(body) {
+                font-family: 'Luckiest Guy', system-ui;
+        }
 
 	div.app {
 		display: flex;
@@ -32,7 +38,7 @@
 		width: 100%;
 		border: 5px solid var(--color-primary);
 	}
-	div.leftside {
+	div.leftSide {
 		min-height: 10vh;
 		width: 15%;
 		border: 5px solid green;
@@ -44,7 +50,7 @@
 		margin: 0;
 		border: 5px solid red;
 	}
-	div.rightside {
+	div.rightSide {
 		flex-grow: 1;
 		min-height: 10vh;
 		margin: 0;
