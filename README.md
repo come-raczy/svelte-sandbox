@@ -76,3 +76,10 @@ And finally, use it in the CSS, dor instance global body:
         font-family: 'Luckiest Guy', system-ui;
     }
 
+## Text color gradient
+
+Create the gradient on the background, clip the background to the text, and make the text transparent:
+
+      background: linear-gradient(to right, rgb(88, 12, 241), rgb(212, 4, 4));
+      background-clip: text;
+      color: transparent;
