@@ -10,6 +10,13 @@
 <p class="local">This is a local scoped style</p>
 
 <style lang="scss">
+    h1 {
+      font-size: 72px;
+      background: linear-gradient(to right, rgb(88, 12, 241), rgb(212, 4, 4));
+      background-clip: text;
+      color: transparent;
+    }
+
     h2 {
         color: $color;
     }
