@@ -1,13 +1,17 @@
-<script>
-        import '@fontsource/luckiest-guy';
+<script lang="ts">
+	import '@fontsource/luckiest-guy';
+	import LeftSide from 'components/LeftSide.svelte';
 	let theme = 'dark';
-	let aa = { a: 1, b: 2 };
+	import { count } from '$lib/stores';
 </script>
 
+<div style="flex-basis: 100%;height: 0"></div>
 <div class="app {theme}">
-	<div class="header"></div>
+	<div class="header">
+		<p>the count is: {$count}</p>
+	</div>
 	<div style="flex-basis: 100%;height: 0"></div>
-	<div class="leftSide"></div>
+	<LeftSide />
 	<div class="main">
 		<slot />
 	</div>
@@ -18,10 +22,10 @@
 
 <style>
 	@import '../app.css';
-	
-        :global(body) {
-                font-family: 'Luckiest Guy', system-ui;
-        }
+
+	:global(body) {
+		font-family: 'Luckiest Guy', system-ui;
+	}
 
 	div.app {
 		display: flex;

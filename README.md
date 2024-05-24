@@ -42,7 +42,7 @@ Using CSS variables, defined in `src/app.css` for each of the themes ('light' an
 The top level "+layout.svelte" implements the theme selection as follows:
 
 - in the script section: defines a 'theme' variable and set it to the desired value
-- in the components section: uses the theme variable to add the theme to the class 
+- in the components section: uses the theme variable to add the theme to the class
 - in the theme section: "@import '../app.css'"
 
 For some reason, it works because at the point where the import is done, the selected
@@ -54,7 +54,7 @@ will get the variables as defined in the newly specified theme.
 
 Additionally, the preprocessor had been replaced in `svelte.config.js` in order to use
 svelte preprocessor instead of vite preprocessor, and to prepend `src/app.scss` to all
-scss preprocessing. This provides a mechanism to have SCSS variables and mixins. The 
+scss preprocessing. This provides a mechanism to have SCSS variables and mixins. The
 idea is that `app.scss` simply includes the requires SCSS content, in this case the
 files `_variables.scss` and `_mixins.scss`.
 
@@ -83,3 +83,35 @@ Create the gradient on the background, clip the background to the text, and make
       background: linear-gradient(to right, rgb(88, 12, 241), rgb(212, 4, 4));
       background-clip: text;
       color: transparent;
+
+# How data flows between components
+
+## Data stores
+
+The recipe is as follows:
+
+- create a file that contains data stores (e.g. `$lib/stores.ts`)
+- import the required data stores from each of the components sharing the store
+-
+
+For instance, `stores.ts`:
+
+    import { writable } from 'svelte/store';
+    export const count = writable(0);
+
+Then the component updating the count (e.g. `Producer.svelte`):
+
+    <script lang="ts">
+      import { count } from '$lib/stores';
+      function increment() {
+        count.update((n) => n + 1);
+      }
+    </script>
+    <button on:click={increment}>increment</button>
+
+And in all components that read the value (e.g. `Consumer.svelte`):
+
+    <script lang="ts">
+      import { count } from '$lib/stores';
+    </script>
+    <p>count: {$count}</p>
